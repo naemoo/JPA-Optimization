@@ -44,6 +44,12 @@ public class OrderQueryRepository {
 		).getResultList();
 	}
 
+	/**
+	 * where 절 in을 사용함으로써 Query 최적화
+	 * Query 발생 수 2번
+	 * 1) OrderQueryDto 가져올 때 1번
+	 * 2) OrderItemQueryDto로 변환 시 1번 -> in 절 사용으로 최적
+	 */
 	public List<OrderQueryDto> findAllByDto_optimization() {
 		List<OrderQueryDto> result = findOrders();
 		List<Long> orderIds = result.stream()
@@ -64,14 +70,22 @@ public class OrderQueryRepository {
 		return result;
 	}
 
+	/**
+	 *  findAllByDto_optimization 쿼리 최적화 (Query 2번 -> 1번)
+	 */
 	public List<OrderFlatDto> findAllDto_flat() {
 		return em.createQuery(
-			"select new jpabook.jpashop.repository.query.OrderFlatDto(o.id, m.name,  o.orderDate,  o.status, d.address,  i.name,  oi.orderPrice, oi.count) "
-				+ "from Order o "
-				+ "join o.member m "
-				+ "join o.delivery d "
-				+ "join o.orderItems oi "
-				+ "join oi.item i", OrderFlatDto.class
+				"select new jpabook.jpashop.repository.query.OrderFlatDto(o.id, m.name,  o.orderDate,  o.status, d.address,  i.name,  oi.orderPrice, oi.count) "
+						+ "from Order o "
+						+ "join o.member m "
+						+ "join o.delivery d "
+						+ "join o.orderItems oi "
+						+ "join oi.item i", OrderFlatDto.class
 		).getResultList();
 	}
+
+	public List<OrderFlatDto> findAllDto_flatUsingQueryDSL() {
+		return null;
+	}
+
 }

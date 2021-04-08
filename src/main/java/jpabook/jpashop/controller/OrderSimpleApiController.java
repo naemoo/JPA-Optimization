@@ -1,4 +1,4 @@
-package jpabook.jpashop.api;
+package jpabook.jpashop.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +13,6 @@ import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
 import jpabook.jpashop.repository.OrderSimpleQueryDto;
-import jpabook.jpashop.repository.query.OrderFlatDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

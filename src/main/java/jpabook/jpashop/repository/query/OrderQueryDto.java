@@ -1,12 +1,12 @@
 package jpabook.jpashop.repository.query;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
+import com.querydsl.core.annotations.QueryProjection;
 import jpabook.jpashop.domain.Address;
-import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class OrderQueryDto {
@@ -17,6 +17,7 @@ public class OrderQueryDto {
 	private Address address;
 	private List<OrderItemQueryDto> orderItems;
 
+	@QueryProjection
 	public OrderQueryDto(Long orderId, String name, LocalDateTime orderDate, OrderStatus orderStatus,
 		Address address) {
 		this.orderId = orderId;

@@ -1,20 +1,25 @@
 package jpabook.jpashop.repository;
 
-import java.util.List;
-
+import jpabook.jpashop.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import jpabook.jpashop.domain.Member;
+import java.util.List;
+
 
 @SpringBootTest
+@AutoConfigureMockMvc
 @Transactional
 class MemberRepositoryTest {
 	@Autowired
 	private MemberRepository memberRepository;
+	@Autowired
+	private MockMvc mockMvc;
 
 	@Test
 	public void memberTest() throws Exception {

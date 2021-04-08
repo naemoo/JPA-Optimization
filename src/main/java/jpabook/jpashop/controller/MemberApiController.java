@@ -1,10 +1,9 @@
-package jpabook.jpashop.api;
+package jpabook.jpashop.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jpabook.jpashop.domain.Member;
